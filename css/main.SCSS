@@ -1,0 +1,140 @@
+// shared variables
+$white: #fff;
+$black: #000;
+$gray: #999;
+$lightgray: #dbdbdb;
+$mainColor: #141533;
+$secColor: #656279;
+$secBg: #fafafa;
+
+@mixin btn() {
+  width: fit-content;
+  background: transparent;
+  color: $mainColor;
+  border: 2px solid $mainColor;
+  margin-inline-start: 0.5rem;
+  transition: 0.5s;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  margin: 1rem 0 0 0;
+  &:hover {
+    background: $mainColor;
+    color: $white;
+  }
+}
+
+::selection {
+  background-color: $white;
+  color: $mainColor;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $secColor;
+}
+input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+body {
+  color: $mainColor;
+  background: url("../img/wave.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.container {
+  .mainH1 {
+    position: relative;
+    width: fit-content;
+    color: $secBg;
+    cursor: default;
+    @media (max-width: 991px) {
+      margin: 0 auto;
+    }
+    &:hover::after {
+      width: 100%;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: $secBg;
+      width: 70%;
+      height: 3px;
+      transition: 0.5s;
+    }
+  }
+  .forms {
+    .card {
+      padding: 3rem;
+      background: #fafafa96;
+      box-shadow: 0 0 20px #a09ead78;
+      backdrop-filter: blur(10px);
+      display: none;
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          display: block;
+        }
+      }
+      @media (max-width: 991px) {
+        padding: 1rem;
+      }
+      .proplemName {
+        h4 {
+          @media (max-width: 991px) {
+            font-size: 1.3rem;
+          }
+        }
+        .form {
+          flex-direction: column;
+          // align-items: flex-start;
+          .inputs {
+            display: flex;
+            input {
+              padding: 0.5rem;
+              box-shadow: none;
+              background: transparent;
+              border: 2px solid $secColor;
+              transition: 0.5s;
+              font-weight: 700;
+              &:focus {
+                border: 2px solid $mainColor;
+              }
+            }
+          }
+          button {
+            @include btn();
+          }
+        }
+      }
+    }
+  }
+  .load {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #loadMore {
+      @include btn();
+      color: $white;
+      border: 2px solid $white;
+      &:hover {
+        background: $white;
+        color: $mainColor;
+      }
+    }
+  }
+}
