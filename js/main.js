@@ -37,7 +37,14 @@ showResultBtn[1].addEventListener("click", () => {
 });
 
 // Problem 3: Sort array in descending order
-addToArrayBtn[1].addEventListener("click", () => addToArrays(2, 3, 1, 4));
+addToArrayBtn[1].addEventListener("click", () => {
+  const value = inputs[2].value.trim();
+  if (value && value > -1) {
+    arrays[1].push(+value);
+    h2[4].innerHTML = `Your Array : [${arrays[1]}]`;
+    inputs[2].value = "";
+  }
+});
 
 showResultBtn[2].addEventListener("click", () => {
   if (arrays[1].length > 0) {
